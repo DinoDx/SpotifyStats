@@ -22,6 +22,7 @@ MongoClient.connect(db_url, { useNewUrlParser: true }, (err, client) => {
 
 /* ---- Begin Logic ---- */
 
+/* ---- Home ---- */
 app.get('/', (req, res) => {
   db.collection('songs').aggregate([{
     $sample:{
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
     })
 })
 
+/* ---- Search Bar ---- */
 app.post('/search', (req, res) => {
   var name = req.body.name
   db.collection('songs').find({$or: [
@@ -42,3 +44,60 @@ app.post('/search', (req, res) => {
     res.render('songs', { songs: results })
   })
 })
+
+/* ---- Query Menu ---- */
+app.post('/query', (req, res) => {
+  var genre = req.body.genre
+  var field = req.body.field
+  var value = parseFloat(req.body.value)
+
+  if (req.body.query_type === 'less') {
+    if (genre === "any"){
+      db.collection('songs').find({[field] : {$lt : value}}).sort({[field] : 1}).toArray()
+        .then(results => {
+          res.render('songs', { songs: results })
+        })
+    } else {
+      db.collection('songs').find({[field] : {$lt : value}, "Genre" : {$regex : genre, $options : 'i'}}).sort({[field] : 1}).toArray()
+        .then(results => {
+          res.render('songs', { songs: results })
+        })
+    } 
+  }
+
+  if (req.body.query_type === 'more') {
+    if (genre === "any"){
+      db.collection('songs').find({[field] : {$gt : value}}).sort({[field] : 1}).toArray()
+        .then(results => {
+          res.render('songs', { songs: results })
+        })
+    } else {
+      db.collection('songs').find({[field] : {$gt : value}, "Genre" : {$regex : genre, $options : 'i'}}).sort({[field] : 1}).toArray()
+        .then(results => {
+          res.render('songs', { songs: results })
+        })
+    } 
+  }
+
+  if (req.body.query_type === 'equal') {
+    if (genre === "any"){
+      db.collection('songs').find({[field] : value}).sort({[field] : 1}).toArray()
+        .then(results => {
+          res.render('songs', { songs: results })
+        })
+    } else {
+      db.collection('songs').find({[field] : value, "Genre" : {$regex : genre, $options : 'i'}}).sort({[field] : 1}).toArray()
+        .then(results => {
+          res.render('songs', { songs: results })
+        })
+    } 
+  }
+})
+
+/* ---- Most Popular Songs ---- */
+
+
+/* ---- Highest ranked songs ---- */
+
+
+/* ---- More Time in the charts ---- */

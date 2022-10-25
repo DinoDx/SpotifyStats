@@ -21,25 +21,25 @@
             <div>
               <form action="/query" method="POST" style="font-size: 18px; color:#ffffff;">
                 <div class="ms-5 form-check">
-                  <input class="form-check-input" id ="radioPop" type="radio" name="tipology" value="red" required>
+                  <input class="form-check-input" id ="radioPop" type="radio" name="genre" value="pop" required>
                   <label class="form-check-label" for="radioPop">Pop</label><br>
-                  <input class="form-check-input" id ="radioRock" type="radio" name="tipology" value="white">
+                  <input class="form-check-input" id ="radioRock" type="radio" name="genre" value="rock">
                   <label class="form-check-label" for="radioRock">Rock</label><br>
-                  <input class="form-check-input" id ="RadioRap"type="radio" name="tipology" value="rose">
+                  <input class="form-check-input" id ="RadioRap"type="radio" name="genre" value="rap">
                   <label class="form-check-label" for="RadioRap">Rap</label><br>
-                  <input class="form-check-input" id ="RadioIndie" type="radio" name="tipology" value="sparkling">
+                  <input class="form-check-input" id ="RadioIndie" type="radio" name="genre" value="indie">
                   <label class="form-check-label" for="RadioIndie">Indie</label><br>
-                  <input class="form-check-input" id ="RadioTrap" type="radio" name="tipology" value="all">
+                  <input class="form-check-input" id ="RadioTrap" type="radio" name="genre" value="trap">
                   <label class="form-check-label" for="RadioTrap">Trap</label><br>
-                  <input class="form-check-input" id ="RadioReggaeton" type="radio" name="tipology" value="all">
+                  <input class="form-check-input" id ="RadioReggaeton" type="radio" name="genre" value="reggaeton">
                   <label class="form-check-label" for="RadioReggaeton">Reggaeton</label><br>
-                  <input class="form-check-input" id ="RadioAny" type="radio" name="tipology" value="all">
+                  <input class="form-check-input" id ="RadioAny" type="radio" name="genre" value="any">
                   <label class="form-check-label" for="RadioAny">Any genre</label><br>
                 </div>
                 <br>
                 <p class = "fw-bold text-center" style="font-size: 24px; color: #ffffff;">song with...</p>
                 <div class="ms-5 form-check">
-                  <input class="form-check-input" id="radioPosition" type="radio" name="field" value="Position" required>
+                  <input class="form-check-input" id="radioPosition" type="radio" name="field" value="Highest Charting Position" required>
                   <label class="form-check-label" for="radioPosition">Highest Position</label><br>
                   <input class="form-check-input" id="radioPopularity" type="radio" name="field" value="Popularity">
                   <label class="form-check-label" for="radioPopularity">Popularity</label><br>
@@ -62,9 +62,9 @@
               </form>
             </div>
             <div class="text-center" style="margin-top: 30%;">
-              <a class="fw-bold text-decoration-none" href="/topPopularity" style="font-size: 18px; color:#ffffff;">Most popular songs</a><br>
-              <a class="fw-bold text-decoration-none" href="/topRanking" style="font-size: 18px; color:#ffffff;">Highest ranked songs</a><br>
-              <a class="fw-bold text-decoration-none" href="/topTimes" style="font-size: 18px; color:#ffffff;">More Time in the charts</a><br>
+              <a class="fw-bold text-decoration-none" href="/topFollowers" style="font-size: 18px; color:#ffffff;">Most Followed artists</a><br>
+              <a class="fw-bold text-decoration-none" href="/topStreams" style="font-size: 18px; color:#ffffff;">Most Streamed songs</a><br>
+              <a class="fw-bold text-decoration-none" href="/topTimes" style="font-size: 18px; color:#ffffff;">More Time in the charts songs</a><br>
             </div>
           </nav>
         </div>
