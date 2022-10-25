@@ -24,11 +24,21 @@ MongoClient.connect(db_url, { useNewUrlParser: true }, (err, client) => {
 
 app.get('/', (req, res) => {
   db.collection('songs').aggregate([{
-    $match:{
-      $and: [
-        {"Highest Charting Position" : {$lt: 10}},
-        {"Popularity": {$gt: 80}}
-    ]}}]).toArray().then(results => {
+    $sample:{
+      size: 50
+    }}]).toArray().then(results => {
       res.render('songs.ejs', { songs: results })
     })
+})
+
+app.post('/search', (req, res) => {
+  var name = req.body.name
+  db.collection('songs').find({$or: [
+    {"Song Name" : {
+      $regex : name, $options : 'i'}},
+    {"Artist" : {
+      $regex : name, $options : 'i'}}
+  ]}).toArray().then(results => {
+    res.render('songs', { songs: results })
+  })
 })

@@ -7,40 +7,44 @@
     crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="UTF-8">
-    <title>Top Hits</title>
+    <title>SpotifyStats</title>
   </head>
-  <body class="h-100 m-0" style="background-color:#824c71;">
+  <body class="h-100 m-0" style="background-color:#191414;">
     <div class="container-fluid">
       <div class="row">
-        <div class="col sticky-top vh-100 d-flex align-items-center" style="background-color:#824c71; border-style: solid; border-width: 0 5px 0 0; border-color: #ffe18f;">
+        <div class="col sticky-top vh-100 d-flex align-items-center" style="background-color:#191414; border-style: solid; border-width: 0 5px 0 0; border-color: #1DB954;">
           <nav class= "w-100">
-            <div class = "fw-bold text-center" style="color:#ffe18f;">
-              <p style="font-size: 42px;">Query Builder</p>
-              <p style="font-size: 24px;">I'm looking for...</p>
+            <div class = "fw-bold text-center" style="color:#ffffff;">
+              <p style="font-size: 42px;" >SpotifyStats<img src="/images/logo.png" width="75" height="75" ></p>
+              <p style="font-size: 24px;">I'm looking for a...</p>
             </div>
             <div>
-              <form action="/query" method="POST" style="font-size: 18px; color:#dccca3;">
+              <form action="/query" method="POST" style="font-size: 18px; color:#ffffff;">
                 <div class="ms-5 form-check">
-                  <input class="form-check-input" id ="radioRed" type="radio" name="tipology" value="red" required>
-                  <label class="form-check-label" for="radioRed">Red</label><br>
-                  <input class="form-check-input" id ="radioWhite" type="radio" name="tipology" value="white">
-                  <label class="form-check-label" for="radioWhite">White</label><br>
-                  <input class="form-check-input" id ="radioRose"type="radio" name="tipology" value="rose">
-                  <label class="form-check-label" for="radioRose">Rose</label><br>
-                  <input class="form-check-input" id ="radioSparkling" type="radio" name="tipology" value="sparkling">
-                  <label class="form-check-label" for="radioSparkling">Sparkling</label><br>
-                  <input class="form-check-input" id ="radioAll" type="radio" name="tipology" value="all">
-                  <label class="form-check-label" for="radioAll">All</label><br>
+                  <input class="form-check-input" id ="radioPop" type="radio" name="tipology" value="red" required>
+                  <label class="form-check-label" for="radioPop">Pop</label><br>
+                  <input class="form-check-input" id ="radioRock" type="radio" name="tipology" value="white">
+                  <label class="form-check-label" for="radioRock">Rock</label><br>
+                  <input class="form-check-input" id ="RadioRap"type="radio" name="tipology" value="rose">
+                  <label class="form-check-label" for="RadioRap">Rap</label><br>
+                  <input class="form-check-input" id ="RadioIndie" type="radio" name="tipology" value="sparkling">
+                  <label class="form-check-label" for="RadioIndie">Indie</label><br>
+                  <input class="form-check-input" id ="RadioTrap" type="radio" name="tipology" value="all">
+                  <label class="form-check-label" for="RadioTrap">Trap</label><br>
+                  <input class="form-check-input" id ="RadioReggaeton" type="radio" name="tipology" value="all">
+                  <label class="form-check-label" for="RadioReggaeton">Reggaeton</label><br>
+                  <input class="form-check-input" id ="RadioAny" type="radio" name="tipology" value="all">
+                  <label class="form-check-label" for="RadioAny">Any genre</label><br>
                 </div>
                 <br>
-                <p class = "text-center fw-bold" style="font-size: 24px; color: #ffe18f;">with...</p>
+                <p class = "fw-bold text-center" style="font-size: 24px; color: #ffffff;">song with...</p>
                 <div class="ms-5 form-check">
-                  <input class="form-check-input" id="radioRating" type="radio" name="field" value="Rating" required>
-                  <label class="form-check-label" for="radioRating">Rating</label><br>
-                  <input class="form-check-input" id="radioPrice" type="radio" name="field" value="Price">
-                  <label class="form-check-label" for="radioPrice">Price</label><br>
-                  <input class="form-check-input" id="radioYear" type="radio" name="field" value="Year">
-                  <label class="form-check-label" for="radioYear">Year</label>
+                  <input class="form-check-input" id="radioPosition" type="radio" name="field" value="Position" required>
+                  <label class="form-check-label" for="radioPosition">Highest Position</label><br>
+                  <input class="form-check-input" id="radioPopularity" type="radio" name="field" value="Popularity">
+                  <label class="form-check-label" for="radioPopularity">Popularity</label><br>
+                  <input class="form-check-input" id="radioStreams" type="radio" name="field" value="Streams">
+                  <label class="form-check-label" for="radioStreams">Number of Streams</label>
                 </div>
                 <br><br>
                 <div class="ms-5 form-check">
@@ -51,47 +55,36 @@
                   <input class="form-check-input" id="radioEqual" type="radio" name="query_type" value="equal">
                   <label class="form-check-label" for="radioEqual">Equal to</label>
                 </div>
-                <br>
                 <div class= "text-center">
                   <input type="text" class="form-control-sm" name="value">
-                  <input class="rounded p-2 mx-2" type="submit" value="Query" style="background-color: #4a2545 ; color: #ffe18f;">
+                  <input class="rounded p-2 mx-2" type="submit" value="Query" style="background-color: #1DB954 ; color: #191414;">
                 </div>
               </form>
             </div>
-            <br>
             <div class="text-center" style="margin-top: 30%;">
-              <a class="fw-bold text-decoration-none" href="/topCountry" style="font-size: 18px; color:#ffe18f;">Most popular countries</a><br>
-              <a class="fw-bold text-decoration-none" href="/topOrigins" style="font-size: 18px; color:#ffe18f;">Most popular regions</a><br>
-              <a class="fw-bold text-decoration-none" href="/topWines" style="font-size: 18px; color:#ffe18f;">Wines Hall of Fame</a><br>
+              <a class="fw-bold text-decoration-none" href="/topPopularity" style="font-size: 18px; color:#ffffff;">Most popular songs</a><br>
+              <a class="fw-bold text-decoration-none" href="/topRanking" style="font-size: 18px; color:#ffffff;">Highest ranked songs</a><br>
+              <a class="fw-bold text-decoration-none" href="/topTimes" style="font-size: 18px; color:#ffffff;">More Time in the charts</a><br>
             </div>
           </nav>
         </div>
         <div class="col-10 p-0">
-          <nav class="navbar navbar-expand-lg p-0" style="z-index:1; background-color:#4a2545;">
+          <nav class="navbar navbar-expand-lg p-0" style="z-index:1; background-color:#191414;">
             <div class="collapse navbar-collapse justify-content-md-center py-2" style="font-size: 18px;">
               <ul class="navbar-nav align-middle fw-bold">
                 <li class="nav-item">
-                  <a class="nav-link" style="color:#ffe18f;" href="/" >Home</a>
+                  <a class="nav-link" style="color:#ffffff;" href="/" >Home</a>
                 </li>
                 <li class="nav-item mx-3">
                   <form method="POST" action="/search" class="form-inline">
-                    <input name="name" class="form-control text-center" type="search" placeholder="Search by name..." aria-label="Search" style="color:#4a2545 ;">
+                    <input name="name" class="form-control text-center" type="search" placeholder="Search by name..." aria-label="Search" style="color:#191414 ;">
                   </form>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle " href=""  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#ffe18f;">Tipology</a>
-                  <div class="dropdown-menu" aria-labelledby="dropdown10" style="background-color:#4a2545;">
-                    <a class="dropdown-item" style="color:#ffe18f;" href="/red">Red</a>
-                    <a class="dropdown-item" style="color:#ffe18f;" href="/white">White</a>
-                    <a class="dropdown-item" style="color:#ffe18f;" href="/rose">Rose</a>
-                    <a class="dropdown-item" style="color:#ffe18f;" href="/sparkling">Sparkling</a>
-                  </div>
                 </li>
               </ul>
             </div>
           </nav>
-          <table id = "sortTable" class="table table-hover table-striped text-center" style="background-color:#dccca3;">
-            <thead class="sticky-top fw-bold" style="z-index:0; background-color:#824c71; color: #ffe18f; font-size: 18px;">
+          <table id = "sortTable" class="table table-hover table-striped text-center" style="background-color:#ffffff;">
+            <thead class="sticky-top fw-bold" style="z-index:0; background-color:#1DB954; color: #000000; font-size: 18px;">
               <tr>
                 <th onclick="sortTable(0)" scope="col">Song</th>
                 <th onclick="sortTable(1)" scope="col">Artist</th>
@@ -102,7 +95,7 @@
             </thead>
             <tbody>
               <% for(var i = 0; i < songs.length; i++) {%>
-              <tr id = "wines" style="color: #4a2545;">
+              <tr id = "wines" style="color: #000000;">
                 <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Song Name'] %></td>
                 <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Artist'] %></td>
                 <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Highest Charting Position'] %></td>
