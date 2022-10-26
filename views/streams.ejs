@@ -1,4 +1,4 @@
-<!-- artists.ejs -->
+<!-- streams.ejs -->
 <!DOCTYPE html>
 <html lang="it" class="h-100" >
   <head>
@@ -30,17 +30,17 @@
           <table id = "sortTable" class="table table-hover table-striped text-center" style="background-color:#ffffff;">
             <thead class="sticky-top fw-bold" style="z-index:0; background-color:#1DB954; color: #ffffff; font-size: 18px;">
               <tr>
-                <th onclick="sortTable(0)" scope="col">Artist</th>
-                <th onclick="sortTable(1)" scope="col">Number of followers</th>
-                <th onclick="sortTable(2)" scope="col">Number of songs in the chart</th>
+                <th onclick="sortTable(0)" scope="col">Song</th>
+                <th onclick="sortTable(1)" scope="col">Artist</th>
+                <th onclick="sortTable(2)" scope="col">Number of streams</th>
               </tr>
             </thead>
             <tbody>
-              <% for(var i = 0; i < artists.length; i++) {%>
+              <% for(var i = 0; i < songs.length; i++) {%>
               <tr id = "countries" style="color: #191414;">
-                <td class = "align-middle fw-bold" style="width: 50%; font-size: 18px;"><%= artists[i]["_id"] %></td>
-                <td class = "align-middle fw-bold" style="width: 20%"><%= artists[i]["followers"] %></td>
-                <td class = "align-middle fw-bold" style="width: 30%"><%= artists[i]["songs"]%></td>
+                <td class = "align-middle fw-bold" style="width: 50%; font-size: 18px;"><%= songs[i]["Song Name"] %></td>
+                <td class = "align-middle fw-bold" style="width: 20%"><%= songs[i]["Artist"] %></td>
+                <td class = "align-middle fw-bold" style="width: 30%"><%= songs[i]["Streams"]%></td>
               </tr>
               <% } %>
             </tbody>

@@ -64,7 +64,6 @@
             <div class="text-center" style="margin-top: 30%;">
               <a class="fw-bold text-decoration-none" href="/topFollowers" style="font-size: 18px; color:#ffffff;">Most Followed artists</a><br>
               <a class="fw-bold text-decoration-none" href="/topStreams" style="font-size: 18px; color:#ffffff;">Most Streamed songs</a><br>
-              <a class="fw-bold text-decoration-none" href="/topTimes" style="font-size: 18px; color:#ffffff;">More Time in the charts songs</a><br>
             </div>
           </nav>
         </div>
@@ -84,7 +83,7 @@
             </div>
           </nav>
           <table id = "sortTable" class="table table-hover table-striped text-center" style="background-color:#ffffff;">
-            <thead class="sticky-top fw-bold" style="z-index:0; background-color:#1DB954; color: #000000; font-size: 18px;">
+            <thead class="sticky-top fw-bold" style="z-index:0; background-color:#1DB954; color: #ffffff; font-size: 18px;">
               <tr>
                 <th onclick="sortTable(0)" scope="col">Song</th>
                 <th onclick="sortTable(1)" scope="col">Artist</th>
@@ -94,13 +93,18 @@
               </tr>
             </thead>
             <tbody>
-              <% for(var i = 0; i < songs.length; i++) {%>
-              <tr id = "wines" style="color: #000000;">
-                <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Song Name'] %></td>
-                <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Artist'] %></td>
-                <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Highest Charting Position'] %></td>
-                <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Week of Highest Charting'] %></td>
-                <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Popularity'] %></td>
+              <% for(var i=0; i < songs.length; i++) {%>
+              <tr id = "songs" style="color: #000000;">
+                <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;">
+                  <form id="songname" action="/song" method="get">
+                  <input type="hidden" name="song" value= <%= songs[i]['Song Name'].replace(/\s/g,''); %> />
+                  <a href="javascript:;" onclick="document.getElementById('songname').submit();"><%= songs[i]['Song Name']; %></a>
+                </form>
+                </td>
+                <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Artist']; %></td>
+                <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Highest Charting Position']; %></td>
+                <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Week of Highest Charting']; %></td>
+                <td class = "align-middle fw-bold" style="width: 20%; font-size: 18px;"><%= songs[i]['Popularity']; %></td>
               <% } %>
             </tbody>
           </table>

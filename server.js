@@ -26,8 +26,8 @@ MongoClient.connect(db_url, { useNewUrlParser: true }, (err, client) => {
 app.get('/', (req, res) => {
   db.collection('songs').aggregate([{
     $sample:{
-      size: 50
-    }}]).toArray().then(results => {
+      size: 100
+    }}]).sort({"Popularity": -1}).toArray().then(results => {
       res.render('songs.ejs', { songs: results })
     })
 })
@@ -40,7 +40,7 @@ app.post('/search', (req, res) => {
       $regex : name, $options : 'i'}},
     {"Artist" : {
       $regex : name, $options : 'i'}}
-  ]}).toArray().then(results => {
+  ]}).sort({"Popularity": -1}).toArray().then(results => {
     res.render('songs', { songs: results })
   })
 })
@@ -94,10 +94,36 @@ app.post('/query', (req, res) => {
   }
 })
 
-/* ---- Most Popular Songs ---- */
+/* ---- Most Followed Artists ---- */
+app.get('/topFollowers', (req, res) => {
+  db.collection('songs').aggregate([{
+    $group:{
+      _id: "$Artist",
+      "followers": {"$first": "$Artist Followers"},
+      "songs": {"$sum": 1}
+    }},{
+    $sort: { "followers": -1, "songs": -1, "_id": -1} }]).limit(50).toArray().then(results => {
+      res.render('artists', { artists: results })
+    })
+})
 
+/* ---- Most Streamed Songs ---- */
 
-/* ---- Highest ranked songs ---- */
+app.get('/topStreams', (req, res) => {
+  db.collection('songs').aggregate([{
+    $sort: { "Streams": -1}}]).limit(50).toArray().then(results => {
+      res.render('streams', { songs: results })
+    })
+})
 
-
-/* ---- More Time in the charts ---- */
+/* ---- Song Card DA FINIRE O ELIMINARE---- */
+app.get('/song', (req, res) => {
+  var name = req.param("song")
+  console.log(name)
+  db.collection('songs').aggregate([{
+    $match:{
+      "Song Name": {$regex: name, $options : 'i'}}
+    }]).toArray().then(results => {
+      res.render('song', { song: results })
+    })
+})
