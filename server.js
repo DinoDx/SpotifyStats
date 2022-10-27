@@ -8,7 +8,7 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 /* ---- Connection with the DB ---- */
-const db_url = "mongodb://localhost:27017"
+const db_url = "mongodb://0.0.0.0:27017"
 const db_name = 'db2'
 let db
 
