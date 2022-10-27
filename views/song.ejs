@@ -9,205 +9,54 @@
     <meta charset="UTF-8">
     <title>SpotifyStats</title>
   </head>
-  <body class="h-100 m-0" style="background-color:#824c71;">
+  <body class="h-100 m-0" style="background-color:#191414;
+  display: flex;
+  justify-content: center;
+  align-items: center;">
     <div class="container-fluid">
       <div class="row">
-        <div class="col p-0">
-          <nav class="navbar navbar-expand-lg p-0" style="z-index:1; background-color:#4a2545;">
+        <div class="col sticky-top vh-100 d-flex align-items-center" style="background-color:#191414; border-style: solid; border-width: 0 5px 0 0; border-color: #1DB954;">
+          <nav class= "w-100">
+            <div class = "fw-bold text-center" style="color:#ffffff;">
+              <p style="font-size: 42px;" >SpotifyStats<img src="/images/logo.png" width="75" height="75" ></p>
+            </div>
+          </nav>
+        </div>
+        <div class="col-10 p-0">
+          <nav class="navbar navbar-expand-lg p-0" style="z-index:1; background-color:#191414;">
             <div class="collapse navbar-collapse justify-content-md-center py-2" style="font-size: 18px;">
               <ul class="navbar-nav align-middle fw-bold">
                 <li class="nav-item">
-                  <a class="nav-link" style="color:#ffe18f;" href="/" >Home</a>
+                  <a class="nav-link" style="color:#ffffff;" href="/" >Home</a>
                 </li>
                 <li class="nav-item mx-3">
                   <form method="POST" action="/search" class="form-inline">
-                    <input name="name" class="form-control text-center" type="search" placeholder="Search by name..." aria-label="Search">
+                    <input name="name" class="form-control text-center" type="search" placeholder="Search by name..." aria-label="Search" style="color:#191414 ;">
                   </form>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle " href=""  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#ffe18f;">Tipology</a>
-                  <div class="dropdown-menu" aria-labelledby="dropdown10" style="background-color:#4a2545;">
-                    <a class="dropdown-item" style="color:#ffe18f;" href="/red">Red</a>
-                    <a class="dropdown-item" style="color:#ffe18f;" href="/white">White</a>
-                    <a class="dropdown-item" style="color:#ffe18f;" href="/rose">Rose</a>
-                    <a class="dropdown-item" style="color:#ffe18f;" href="/sparkling">Sparkling</a>
-                  </div>
                 </li>
               </ul>
             </div>
           </nav>
+
+          <div style="height: 60%;
+          width: 25%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: auto;
+          background-image: radial-gradient( circle 602px at 2.1% 5.1%, #1DB954 0%, rgba(0, 0, 0, 1) 90.1%);" class="card">
+            <div class="image">
+                <img height="100px" width="100px" src="/images/logo.png" alt="Immagine" style="    height: 100px;
+                margin: 10px 20px;
+                border-radius: 10px;
+                box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4);">
+            </div>
+            <div class="content" style="    color: #ffffff;">
+            </div>
         </div>
-      </div>
-      <div class="row fw-bold text-center" style="background-color:#824c71; color:#ffe18f; font-size: 34px;">
-        <div class="col" style="margin-top: 10%;">
-          <div class = "rounded p-5" style="background-color:#4a2545;">
-            <div>
-              <p><%= song["Song Name"] %></p>
-              <a class="fw-bold text-decoration-none" href="/topFollowers" style="font-size: 18px; color:#ffffff;"><%= song["Song Name"] %></a><br>
-            </div>
-            <div class = "mt-5" style="font-size: 24px;">
-              <div class = "mb-5 py-3 rounded-circle border border-warning" style="background-color:#824c71;">
-                <%switch (song.Tipology) {
-                  case 'red': %>
-                <img src="/images/red.png">
-                  <%
-                    break
-                  case 'white':%>
-                <img src="/images/white.png">
-                  <%
-                    break
-                  case 'rose':%>
-                <img src="/images/rose.png">
-                  <%
-                    break
-                  case 'sparkling':%>
-                <img src="/images/sparkling.png">
-                  <%
-                    break
-                }%>
-                <p><%= song.Name%></p>
-              </div>
-              <p><%= song.NumberOfRatings%> ratings</p>
-              <p><%= song.Price%> €</p>
-            </div>
-          </div>
-        </div>
-        <div class="col" style="margin-top: 10%;">
-          <div class = "rounded p-5" style="background-color:#4a2545;">
-            <div>
-              <p>Most expensive wine</p>
-            </div>
-            <div class = "mt-5" style="font-size: 24px;">
-              <div class = "mb-5 py-3 rounded-circle border border-warning" style="background-color:#824c71;">
-                <%switch (song.Tipology) {
-                  case 'red': %>
-                <img src="/images/red.png">
-                  <%
-                    break
-                  case 'white':%>
-                <img src="/images/white.png">
-                  <%
-                    break
-                  case 'rose':%>
-                <img src="/images/rose.png">
-                  <%
-                    break
-                  case 'sparkling':%>
-                <img src="/images/sparkling.png">
-                  <%
-                    break
-                }%>
-                <p><%= song.Name%></p>
-              </div>
-              <p><%= song.NumberOfRatings%> ratings</p>
-              <p><%= song.Price%> €</p>
-            </div>
-          </div>
-        </div>
-        <div class="col" style="margin-top: 10%;">
-          <div class = "rounded p-5" style="background-color:#4a2545;">
-            <div>
-              <p>Cheapest wine</p>
-            </div>
-            <div class = "mt-5" style="font-size: 24px;">
-              <div class = "mb-5 py-3 rounded-circle border border-warning" style="background-color:#824c71;">
-                <%switch (song.Tipology) {
-                  case 'red': %>
-                <img src="/images/red.png">
-                  <%
-                    break
-                  case 'white':%>
-                <img src="/images/white.png">
-                  <%
-                    break
-                  case 'rose':%>
-                <img src="/images/rose.png">
-                  <%
-                    break
-                  case 'sparkling':%>
-                <img src="/images/sparkling.png">
-                  <%
-                    break
-                }%>
-                <p><%= song.Name%></p>
-              </div>
-              <p><%= song.NumberOfRatings%> ratings</p>
-              <p><%= song.Price%> €</p>
-            </div>
-          </div>
-        </div>
-        <div class="col" style="margin-top: 10%;">
-          <div class = "rounded p-5" style="background-color:#4a2545;">
-            <div>
-              <p>Best wine</p>
-            </div>
-            <div class = "mt-5" style="font-size: 24px;">
-              <div class = "mb-5 py-3 rounded-circle border border-warning" style="background-color:#824c71;">
-                <%switch (song.Tipology) {
-                  case 'red': %>
-                <img src="/images/red.png">
-                  <%
-                    break
-                  case 'white':%>
-                <img src="/images/white.png">
-                  <%
-                    break
-                  case 'rose':%>
-                <img src="/images/rose.png">
-                  <%
-                    break
-                  case 'sparkling':%>
-                <img src="/images/sparkling.png">
-                  <%
-                    break
-                }%>
-                <p><%= song.Name%></p>
-              </div>
-              <p><%= song.NumberOfRatings%> ratings</p>
-              <p><%= song.Price%> €</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-    <script>
-      function sortTable(n) {
-        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-        table = document.getElementById("sortTable");
-        switching = true;
-        dir = "asc";
-        while (switching) {
-          switching = false;
-          rows = table.rows;
-          for (i = 1; i < (rows.length - 1); i++) {
-            shouldSwitch = false;
-            x = rows[i].getElementsByTagName("TD")[n];
-            y = rows[i + 1].getElementsByTagName("TD")[n];
-            if (dir == "asc") {
-              if (parseFloat(x.innerHTML.toLowerCase()) > parseFloat(y.innerHTML.toLowerCase())) {
-                shouldSwitch = true;
-                break;
-              }
-            } else if (dir == "desc") {
-              if (parseFloat(x.innerHTML.toLowerCase()) < parseFloat(y.innerHTML.toLowerCase())) {
-                shouldSwitch = true;
-                break;
-              }
-            }
-          }
-          if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-            switchcount ++;
-          } else {
-            if (switchcount == 0 && dir == "asc") {
-              dir = "desc";
-              switching = true;
-            }
-          }
-        }
-      }
-    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

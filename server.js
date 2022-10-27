@@ -118,11 +118,11 @@ app.get('/topStreams', (req, res) => {
 
 /* ---- Song Card DA FINIRE O ELIMINARE---- */
 app.get('/song', (req, res) => {
-  var name = req.param("song")
+  var name = req.param("song").replaceAll("%20", " ")
   console.log(name)
   db.collection('songs').aggregate([{
     $match:{
-      "Song Name": {$regex: name, $options : 'i'}}
+      "Song Name": name}
     }]).toArray().then(results => {
       res.render('song', { song: results })
     })
