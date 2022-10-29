@@ -25,7 +25,9 @@ MongoClient.connect(db_url, { useNewUrlParser: true }, (err, client) => {
 /* ---- Home ---- */
 app.get('/', (req, res) => {
   db.collection('songs').aggregate([{
-    $sample:{
+    $match:{
+    "Popularity": {$gt:75}}},{
+  $sample:{
       size: 100
     }}]).sort({"Popularity": -1}).toArray().then(results => {
       res.render('songs.ejs', { songs: results })
@@ -58,7 +60,8 @@ app.post('/query', (req, res) => {
           res.render('songs', { songs: results })
         })
     } else {
-      db.collection('songs').find({[field] : {$lt : value}, "Genre" : {$regex : genre, $options : 'i'}}).sort({[field] : 1}).toArray()
+      db.collection('songs').find({[field] : {$lt : value}, "Genre" : {$regex : genre, $options : 'i'}})
+      .sort({[field] : 1}).toArray()
         .then(results => {
           res.render('songs', { songs: results })
         })
@@ -98,9 +101,10 @@ app.post('/query', (req, res) => {
 app.get('/topFollowers', (req, res) => {
   db.collection('songs').aggregate([{
     $group:{
-      _id: "$Artist",
+      "_id": "$Artist",
       "followers": {"$first": "$Artist Followers"},
-      "songs": {"$sum": 1}
+      "songs": {"$sum": 1},
+      "titles": {$push: "$_id"}
     }},{
     $sort: { "followers": -1, "songs": -1, "_id": -1} }]).limit(50).toArray().then(results => {
       res.render('artists', { artists: results })
@@ -113,17 +117,5 @@ app.get('/topStreams', (req, res) => {
   db.collection('songs').aggregate([{
     $sort: { "Streams": -1}}]).limit(50).toArray().then(results => {
       res.render('streams', { songs: results })
-    })
-})
-
-/* ---- Song Card DA FINIRE O ELIMINARE---- */
-app.get('/song', (req, res) => {
-  var name = req.param("song")
-  console.log(name)
-  db.collection('songs').aggregate([{
-    $match:{
-      "Song Name": {$regex: name, $options : 'i'}}
-    }]).toArray().then(results => {
-      res.render('song', { song: results })
     })
 })
